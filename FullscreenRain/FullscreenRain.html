@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      *{
+        padding: 0;
+        margin: 0;
+        
+      }
+      .containar{
+        min-height: 100vh;
+        width: 100vw;
+        background: black;
+      }
+      .new_div{
+        position: absolute;
+        top: -20px;
+        width: 2px;
+        background: #5f9fd9;
+        color: #4bff70;
+        animation: animate 3s linear infinite;
+      }
+      @keyframes animate{
+        0%{
+          transform: translateY(0px) scaleY(1);
+        }
+        95%{
+          transform: translateY(90vh) scaleY(1);
+        }
+        100%{
+          transform: translateY(90vh) scaleX(20) scaleY(0.2);
+        }
+      }
+      
+      
+    </style>
+  </head>
+  <body>
+    <div class="containar">
+      
+    </div>
+  </body>
+  <script>
+    const containar = document.querySelector(".containar")
+    function drop(){
+      const Left = Math.floor(Math.random()*100)
+      const abcIndex = Math.floor(Math.random()*30)
+      const height = Math.floor(Math.random()*10)
+      const width = Math.floor(Math.random()*2)
+      const duration = Math.floor(Math.random()*3)
+      let div = document.createElement("div")
+      div.classList.add("new_div")
+      div.style.left = Left +"%"
+      div.style.height = height+"px"
+      div.style.width = width+"px"
+      div.style.animationDuration = duration+"s"
+      containar.appendChild(div)
+      
+      setTimeout(()=>{
+        containar.removeChild(div)
+      },duration+1000)
+    }
+    
+    setInterval(()=>{
+      drop()
+    },10)
+    
+  </script>
+</html>

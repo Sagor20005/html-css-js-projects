@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>cloud</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body{
+        background: #181d1c;
+        width: 100%;
+        padding-top: 50px;
+      }
+      .containar{
+        height: 400px;
+        width: 300px;
+        border-bottom: 1px solid #155d4f;
+        margin: auto;
+        margin-top: 100px;
+      }
+      .cloud{
+        height: 80px;
+        width: 200px;
+        background: #73b9e6;
+        border-radius: 80px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        z-index: 544;
+        animation: thander 3s steps(3) infinite;
+      }
+      .cloud:before{
+        content: " ";
+        height: 80px;
+        width: 80px;
+        background: #73b9e6;
+        border-radius: 50%;
+        position: absolute;
+        top: -40px;
+        left: 35px;
+        filter: drop-shadow(50px 5px 0px #73b9e6);
+        animation: thander2 3s steps(3) infinite;
+      }
+      
+      .cloud div{
+        z-index: -1000;
+        position: absolute;
+        height: 5px;
+        width: 2px;
+        border-radius: 50%;
+        /* background: #a1cbf0; */
+        top: 80px;
+        left: 5px;
+        color: white;
+        animation:  DropAnimation 1s linear;
+      }
+      
+      @keyframes DropAnimation{
+        0%{
+          transform: translateY(0) scaleY(1);
+        }
+        95%{
+          transform: translateY(310px) scaleY(.5);
+        }
+        100%{
+          transform: translateY(310px) scaleY(.1) scaleX(2);
+        }
+      }
+      
+      @keyframes thander{
+        0%%{
+          background: #73b9e6;
+        }
+        50%{
+          background: #73b9e6;
+        }
+        51%{
+          background: #66f33d;
+        }53%{
+          background: #73b9e6;
+        }
+        100%{
+          background: #73b9e6;
+        }
+        
+      }
+      @keyframes thander2{
+        0%%{
+          background: #73b9e6;
+          filter: drop-shadow(50px 5px 0px #73b9e6);
+        }
+        50%{
+          background: #73b9e6;
+          filter: drop-shadow(50px 5px 0px #73b9e6);
+        }
+        51%{
+          background: #66f33d;
+          filter: drop-shadow(50px 5px 0px #66f33d);
+        }53%{
+          background: #73b9e6;
+          filter: drop-shadow(50px 5px 0px #73b9e6);
+        }
+        100%{
+          background: #73b9e6;
+          filter: drop-shadow(50px 5px 0px #73b9e6);
+        }
+        
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="containar">
+      <div class="cloud">
+      </div>
+    </div>
+  </body>
+  <script>
+    const cloud = document.querySelector(".cloud")
+    
+    function getSymbol(){
+      const symble= "#%&@~+*৳?"
+      const max = symble.length
+      const index = Math.floor(Math.random()*max)
+      return symble[index]
+    }
+    function getColor(){
+      const color = ["#5590df","#89df55","#ffffff","#bb02d4"]
+      const max = color.length - 1
+      const index = Math.floor(Math.random()*max)
+      return color[index]
+    }
+    
+    function AddNewDrop(){
+      let drop = document.createElement("div")
+      const left = Math.floor(Math.random()*180)+10
+      const height = Math.random()*7
+      const width = Math.random()*4
+      const animationDuration = Math.floor(Math.random()*8)
+      drop.style.left = left +"px"
+      drop.style.height = height +"px"
+      drop.style.width = width +"px"
+      drop.innerText = getSymbol()
+      drop.style.color = getColor()
+      drop.style.animationDuration = "1." +animationDuration +"s"
+      cloud.appendChild(drop)
+      setTimeout(()=>{
+        drop.remove()
+      },1000)
+    }
+    
+    setInterval(()=>{
+      AddNewDrop()
+    },5)
+    
+  </script>
+</html>
