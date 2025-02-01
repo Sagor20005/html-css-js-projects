@@ -1,0 +1,6 @@
+THIS IS A Restaurantweb application
+created my me "jakareya haldar"
+
+created this using :
+#html #css #scss #javascript 
+#scroll reveal
