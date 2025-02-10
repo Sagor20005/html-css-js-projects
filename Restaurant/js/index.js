@@ -28,9 +28,9 @@ window.addEventListener("click",autoHideMenu)
 // SCROOL REVEAL INITILIZE
 ScrollReveal({
   reset:true,
-  duration: 2000,
+  duration: 1500,
   origin: 'top',
-  distance: '30px',
+  distance: '20px',
 })
 ScrollReveal().reveal('.reveal',{interval: 200})
 
